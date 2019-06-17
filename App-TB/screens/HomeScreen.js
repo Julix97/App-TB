@@ -7,63 +7,71 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+    View,
+    FlatList,
 } from 'react-native';
 
+import {
+    Card,
+    ListItem,
+    Button,
+    Badge
+} from 'react-native-elements';
+
 import { MonoText } from '../components/StyledText';
+
+
+const list = [
+    {
+        title: 'Tacos',
+        subtitle: 'Adobada',
+        icon: 'plus'
+    },
+    {
+        title: 'Tortas',
+        subtitle: 'Adobada',
+        icon: 'plus'
+    }
+]
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
-        </View>
-
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
-
-          <Text style={styles.getStartedText}>Get started by opening</Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
-
-          <Text style={styles.getStartedText}>
-            Change this text and your app will automatically reload.
-          </Text>
-        </View>
-
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
-            </Text>
-          </TouchableOpacity>
-        </View>
+              style={styles.container}
+              horizontal={true}
+              alwaysBounceVertical={true}
+              contentContainerStyle={styles.contentContainer}>
+              <View style={styles.containerList}>
+                  <Card title="Ejemplo de Orden" containerStyle={{padding: 5}}>
+                      {
+                          <View>
+                              {
+                                  list.map((l, i) => (
+                                      <ListItem
+                                          key={i}                                          
+                                          badge={{ value: "99+", status: "error", containerStyle: { marginTop: -20 } }}  
+                                          title={l.title}
+                                          leftIcon={{ name: l.icon, type: 'font-awesome' }}
+                                          subtitle={l.subtitle}
+                                          bottomDivider={true}
+                                      />
+                                  ))
+                              }
+                          </View>
+                      }
+                      </Card>
+              </View>
       </ScrollView>
 
       <View style={styles.tabBarInfoContainer}>
         <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
+          Herramientas:
+        </Text>
+        <Text style={styles.tabBarInfoText}>
+          Aqui iran algunas herramientas
         </Text>
 
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>
-            navigation/MainTabNavigator.js
-          </MonoText>
-        </View>
       </View>
     </View>
   );
@@ -109,6 +117,15 @@ function handleHelpPress() {
 }
 
 const styles = StyleSheet.create({
+    containerList: {
+        flex: 1,
+        paddingTop: 22
+    },
+    itemobj: {
+        padding: 10,
+        fontSize: 18,
+        height: 44,
+    },
   container: {
     flex: 1,
     backgroundColor: '#fff',
