@@ -43,14 +43,14 @@ export default function HomeScreen() {
               alwaysBounceVertical={true}
               contentContainerStyle={styles.contentContainer}>
               <View style={styles.containerList}>
-                  <Card title="Ejemplo de Orden" containerStyle={{padding: 5}}>
+                  <Card title="Ejemplo de Orden" titleStyle={{ backgroundColor: "#458AD5", top: 7, height:30 }} containerStyle={{ padding: 0 }}>
                       {
                           <View>
                               {
                                   list.map((l, i) => (
                                       <ListItem
                                           key={i}                                          
-                                          badge={{ value: "99+", status: "error", containerStyle: { marginTop: -20 } }}  
+                                          badge={{ value: "99+", status: "error", containerStyle: { marginTop: -20} }}  
                                           title={l.title}
                                           leftIcon={{ name: l.icon, type: 'font-awesome' }}
                                           subtitle={l.subtitle}
@@ -119,7 +119,7 @@ function handleHelpPress() {
 const styles = StyleSheet.create({
     containerList: {
         flex: 1,
-        paddingTop: 22
+        paddingTop: 0
     },
     itemobj: {
         padding: 10,
