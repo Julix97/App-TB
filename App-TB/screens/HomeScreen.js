@@ -20,6 +20,7 @@ import {
 } from 'react-native-elements';
 
 
+
 const list = [
     {
         title: 'Tacos',
@@ -51,6 +52,7 @@ export default function HomeScreen() {
               horizontal={true}
               alwaysBounceVertical={true}
               contentContainerStyle={styles.contentContainer}>
+          
               <View style={styles.containerList}>
                   <Card title="Ejemplo de Orden" titleStyle={{ backgroundColor: "#458AD5", top: 7, height:30 }} containerStyle={{ padding: 0 }}>
                       {
@@ -58,8 +60,8 @@ export default function HomeScreen() {
                               {
                                   list.map((l, i) => (
                                       /*<ListItem
-                                          key={i}                                          
-                                          badge={{ value: "99+", status: "error", containerStyle: { marginTop: -20} }}  
+                                          key={i}
+                                          badge={{ value: "99+", status: "error", containerStyle: { marginTop: -20} }}
                                           title={l.title}
                                           leftIcon={{ name: l.icon, type: 'font-awesome' }}
                                           subtitle={l.subtitle}
@@ -68,7 +70,7 @@ export default function HomeScreen() {
 
                                       /*Aqui se realiza la lista --->Mucha suerte y no se estrese por fas >:v */
                                       <View style={styles.row} key={i}>
-                                          <Button                                              
+                                          <Button
                                               icon={
                                                   <Icon
                                                       name="plus"
@@ -76,16 +78,31 @@ export default function HomeScreen() {
                                                       size={15}
                                                       color="white"
                                                   />
-                                              }                                              
+                                              }
                                               style={styles.btnmas1}
                                               buttonStyle={{ backgroundColor: '#5AAC44' }}
                                           />
+
                                           <Text style={styles.titles}>{l.title}</Text>
-                                          
-                                      </View>                                      
+                                            <Text style={styles.subtitles}>{l.subtitle}</Text>
+                                            <Badge badgeStyle={{left: -35}} value="3" status="primary" />
+                                            <Button
+                                                icon={
+                                                    <Icon
+                                                        name="trash"
+                                                        type="entypo"
+                                                        size={10}
+                                                        color="white"
+                                                    />
+                                                }
+                                                style={styles.btncancel}
+                                                buttonStyle={{ backgroundColor: '#E75146' }}
+                                            />
+
+                                      </View>
                                   ))
 
-                              }                              
+                              }
                               <View style={styles.row}>
                                   <Button //Este View es para lo botones de cancelar y finalizar orden
                                       icon={
@@ -113,23 +130,27 @@ export default function HomeScreen() {
                                       title='Cancelar'
                                       buttonStyle={{ backgroundColor: '#E75146' }}
                                   />
-                              </View> 
+                              </View>
                           </View>
-                         
+
                       }
                       </Card>
               </View>
       </ScrollView>
 
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          Herramientas:
-        </Text>
-        <Text style={styles.tabBarInfoText}>
-          Aqui iran algunas herramientas
-        </Text>
+      <View style={styles.containerStyle}>
+        <Button
+        icon={
+          <Icon
+            name="plus"  type="font-awesome"  size={20}  color="white"   />
+        }
+        title=" Orden"  buttonStyle={{backgroundColor:'#5AAC44'}}
 
-      </View>
+      />
+      <Button  icon={ <Icon name="plus" type="font-awesome" size={20} color="white"    />}title=" Pedido"   buttonStyle={{backgroundColor:'#5AAC44'}}/>
+
+</View>
+
     </View>
   );
 }
@@ -164,26 +185,49 @@ function DevelopmentModeNotice() {
 const styles = StyleSheet.create({
     //Estos estilos son los que controlan la orden
     row: {
-        
+
         flexDirection: 'row',
         justifyContent: 'space-between',
+        padding: 5,
         marginBottom: 30,
-        left:10
+        left:-1
     },
-    box: {        
+    box: {
         height: 30,
-        backgroundColor: '#333'        
+        backgroundColor: '#333'
     },
-    btnmas1: {        
+    btnmas1: {
         width:20
     },
+    btncancel: {
+        width:20,
+        left: 10,
+        top: -5
+    },
+
     titles: {
         backgroundColor: 'transparent',
         fontSize: 16,
         top: -5,
-        left: -100
+        left: 6,
+        flexDirection: 'column',
+        justifyContent: 'space-between'
     },
-    //hasta aqui 
+    subtitles: {
+        backgroundColor: 'transparent',
+        fontSize: 14,
+        top: 10,
+        left: -40,
+
+    },
+    //hasta aqui
+    containerStyle:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: -15,
+        padding: 50,
+
+      },
 
 
     containerList: {
