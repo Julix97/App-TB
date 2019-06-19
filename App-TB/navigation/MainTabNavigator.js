@@ -1,5 +1,4 @@
 import React from 'react';
-import { Platform } from 'react-native';
 import {
   createStackNavigator,
   createBottomTabNavigator,
@@ -8,7 +7,6 @@ import {
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
-import SalirScreen from '../screens/Salir';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const HomeStack = createStackNavigator({
@@ -55,11 +53,6 @@ SettingsStack.navigationOptions = {
       />
   ),
 };
-
-
-const SalirStack = createStackNavigator({
-    Salir: SalirScreen,
-});
 
 export default createBottomTabNavigator({
   HomeStack,

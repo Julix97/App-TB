@@ -1,32 +1,38 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View, Alert } from 'react-native';
 import { ListItem } from 'react-native-elements'
 import TouchableScale from 'react-native-touchable-scale'; 
 
 const list = [
     {
         title: 'Categoria 1',
-        icon: 'caret-right'
+        icon: 'caret-right',
+        action: 'Categoria1Screen'
     },
     {
         title: 'Categoria 2',
-        icon: 'caret-right'
+        icon: 'caret-right',
+        action: 'Categoria2Screen'
     },
     {
         title: 'Categoria 3',
-        icon: 'caret-right'
+        icon: 'caret-right',
+        action: 'Categoria3Screen'
     },
     {
         title: 'Categoria 4',
-        icon: 'caret-right'
+        icon: 'caret-right',
+        action: 'Categoria4Screen'
     },
     {
         title: 'Categoria 5',
-        icon: 'caret-right'
+        icon: 'caret-right',
+        action: 'Categoria5Screen'
     },
     {
         title: 'Categoria 6',
-        icon: 'caret-right'
+        icon: 'caret-right',
+        action: 'Categoria6Screen'
     },
 ]
 
@@ -45,14 +51,15 @@ export default function LinksScreen() {
                               bottomDivider={true} 
                               Component={TouchableScale}
                               friction={90} //
-                              tension={100} // These props are passed to the parent component (here TouchableScale)
+                              tension={100} //
                               activeScale={0.95} //
                               linearGradientProps={{
-                                  colors: ['#C8EBFA', '#C8EBFB'],
+                                  colors: ['#F1F1F0', '#F1F1F0'],
                                   start: [1, 0],
                                   end: [0.2, 0],
                               }}
                               chevron
+                              //onPress={() => this.props.navigation.navigate(item.action)} //Sistema de manvegación, aún no funciona :C
                           />
                       ))
                   }

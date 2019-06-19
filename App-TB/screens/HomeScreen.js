@@ -15,13 +15,22 @@ import {
     Card,
     ListItem,
     Button,
-    Badge
+    Badge,
+    Icon
 } from 'react-native-elements';
-
-import { MonoText } from '../components/StyledText';
 
 
 const list = [
+    {
+        title: 'Tacos',
+        subtitle: 'Adobada',
+        icon: 'plus'
+    },
+    {
+        title: 'Tortas',
+        subtitle: 'Adobada',
+        icon: 'plus'
+    },
     {
         title: 'Tacos',
         subtitle: 'Adobada',
@@ -48,17 +57,65 @@ export default function HomeScreen() {
                           <View>
                               {
                                   list.map((l, i) => (
-                                      <ListItem
+                                      /*<ListItem
                                           key={i}                                          
                                           badge={{ value: "99+", status: "error", containerStyle: { marginTop: -20} }}  
                                           title={l.title}
                                           leftIcon={{ name: l.icon, type: 'font-awesome' }}
                                           subtitle={l.subtitle}
                                           bottomDivider={true}
-                                      />
+                                      />,*/
+
+                                      /*Aqui se realiza la lista --->Mucha suerte y no se estrese por fas >:v */
+                                      <View style={styles.row} key={i}>
+                                          <Button                                              
+                                              icon={
+                                                  <Icon
+                                                      name="plus"
+                                                      type="font-awesome"
+                                                      size={15}
+                                                      color="white"
+                                                  />
+                                              }                                              
+                                              style={styles.btnmas1}
+                                              buttonStyle={{ backgroundColor: '#5AAC44' }}
+                                          />
+                                          <Text style={styles.titles}>{l.title}</Text>
+                                          
+                                      </View>                                      
                                   ))
-                              }
+
+                              }                              
+                              <View style={styles.row}>
+                                  <Button //Este View es para lo botones de cancelar y finalizar orden
+                                      icon={
+                                          <Icon
+                                              name="check"
+                                              type="font-awesome"
+                                              size={15}
+                                              color="white"
+                                          />
+                                      }
+                                      style={styles.btnmas1}
+                                      title='Finalizar'
+                                      buttonStyle={{ backgroundColor: '#5AAC44' }}
+                                  />
+                                  <Button
+                                      icon={
+                                          <Icon
+                                              name="cross"
+                                              type="entypo"
+                                              size={15}
+                                              color="white"
+                                          />
+                                      }
+                                      style={styles.btnmas1}
+                                      title='Cancelar'
+                                      buttonStyle={{ backgroundColor: '#E75146' }}
+                                  />
+                              </View> 
                           </View>
+                         
                       }
                       </Card>
               </View>
@@ -104,21 +161,33 @@ function DevelopmentModeNotice() {
   }
 }
 
-function handleLearnMorePress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/development-mode/'
-  );
-}
-
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/up-and-running/#cant-see-your-changes'
-  );
-}
-
 const styles = StyleSheet.create({
+    //Estos estilos son los que controlan la orden
+    row: {
+        
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 30,
+        left:10
+    },
+    box: {        
+        height: 30,
+        backgroundColor: '#333'        
+    },
+    btnmas1: {        
+        width:20
+    },
+    titles: {
+        backgroundColor: 'transparent',
+        fontSize: 16,
+        top: -5,
+        left: -100
+    },
+    //hasta aqui 
+
+
     containerList: {
-        flex: 1,
+        flex: 3,
         paddingTop: 0
     },
     itemobj: {
@@ -127,7 +196,7 @@ const styles = StyleSheet.create({
         height: 44,
     },
   container: {
-    flex: 1,
+    flex: 3,
     backgroundColor: '#fff',
   },
   developmentModeText: {

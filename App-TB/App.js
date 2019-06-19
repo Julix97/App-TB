@@ -4,10 +4,20 @@ import * as Font from 'expo-font';
 import React, { useState } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
 
 import AppNavigator from './navigation/AppNavigator';
+ /*
+import Categoria1Screen from './screens/Almacen/Categoria1';
+import Categoria2Screen from './screens/Almacen/Categoria2';
+
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+
+const MainNavigator = createStackNavigator({
+    Categoria1: { screen: Categoria1Screen },
+    Categoria2: { screen: Categoria2Screen },
+});*/
+//Sistema de manvegación, aún no funciona :C
+
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -39,11 +49,6 @@ async function loadResourcesAsync() {
     Font.loadAsync({
       // This is the font that we are using for our tab bar
         ...Ionicons.font,
-        ...FontAwesome.font,
-        ...FontAwesome5.font,
-      // We include SpaceMono because we use it in HomeScreen.js. Feel free to
-      // remove this if you are not using it in your app
-      'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
     }),
   ]);
 }
