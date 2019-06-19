@@ -18,7 +18,7 @@ const HomeStack = createStackNavigator({
 HomeStack.navigationOptions = {
   tabBarLabel: 'Ventas',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
+      <TabBarIcon          
           focused={focused}
           name={'dollar'}
           tipo={'font-awesome'}
@@ -61,20 +61,8 @@ const SalirStack = createStackNavigator({
     Salir: SalirScreen,
 });
 
-SalirStack.navigationOptions = {
-    tabBarLabel: 'Salir',
-    tabBarIcon: ({ focused }) => (
-        <TabBarIcon
-            focused={focused}
-            name={'exit-to-app'}
-            tipo={'material-community-icons'}
-        />
-    ),
-};
-
 export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
     SettingsStack,
-    SalirStack,
 });
